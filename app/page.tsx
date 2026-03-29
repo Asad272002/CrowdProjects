@@ -1,5 +1,8 @@
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { HeroSection } from "@/components/landing-page/hero-section";
 export default function Home() {
   return (
-    <div><h1>Hello World</h1></div>
+   <HeroSection />
   );
 }
