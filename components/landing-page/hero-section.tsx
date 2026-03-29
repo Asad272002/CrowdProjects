@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ArrowRightIcon, SparkleIcon } from "lucide-react";
+import Link from "next/link"
 
 const LiveBadge = () => (
   <Badge variant="outline" className="px-4 py-2 mb-8 text-sm backdrop-blur-sm">
@@ -17,13 +19,21 @@ export function HeroSection() {
         <LiveBadge />
       <h1 className="text-5xl font-bold text-foreground">Share What You've Built, Discover What's Launching</h1>
 
-    <p className="text-muted-foreground my-5">
+    <p className="text-lg  sm:text-xl  text-muted-foreground my-5 mb-12 max-w-2xl leading-relaxed">
       A Community Platform for creators to showcase their apps, Ai Tools, SAAS Products , and Creative projects.
       Authentic launches, real builders , genuine feedback.
     </p>
-    <Button>Share Your Products</Button>
-    <Button>Explore Projects</Button>
-    </div>
+    <div className="flex flex-col sm:flex-row gap-4 mb-16">
+    <Button asChild size="lg" className="text-base px-8 shadow-lg">
+      <Link href="/submit">
+        <SparkleIcon className="size-5"/>
+        Share Your Products</Link>
+      </Button>
+    <Button asChild size="lg" className="text-base px-8 shadow-lg" variant="secondary">
+       <Link href="/explore">Explore Projects <ArrowRightIcon  className="size-5"/></Link>
+      </Button>
+    </div> 
+   </div>
     </div>
     </section>
   );

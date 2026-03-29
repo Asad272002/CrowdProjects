@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, Geist } from "next/font/google";
+import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const outfit = Outfit({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({
   variable: "--font-inter",
@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "I Built This",
+  title: "I Built This -- Share Your Creations, Discover New Launches ",
   description: "I built this as I learn",
 };
 
@@ -23,15 +23,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", inter.variable, inter.variable, "font-sans", geist.variable)}
+      className={cn("h-full", "antialiased", inter.variable, inter.variable, "font-sans", outfit.variable)}
     >
-      <body className="min-h-full flex flex-col">
-        <header></header>I Build This
+      <body className={`${outfit.className}`}>
+        <header>I Build This</header>
         {children}
-        <footer>I Built This INC. All Right Reserved 2026</footer> 
-          
-        
-        
+        <footer>I Built This INC. All Right Reserved 2026</footer> ``
         </body>
     </html>
   );
