@@ -1,8 +1,11 @@
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { HeroSection } from "@/components/landing-page/hero-section";
+import FeaturedProducts from "@/components/landing-page/featured-products";
 export default function Home() {
   return (
-   <HeroSection />
-  );
+    <div>
+    <HeroSection />
+
+    <FeaturedProducts />
+</div>
+);
 }
