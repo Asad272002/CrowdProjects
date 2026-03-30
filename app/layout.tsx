@@ -3,6 +3,9 @@ import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 
+import Footer from "@/components/common/footer";
+import Header from "@/components/common/header";
+
 const outfit = Outfit({subsets:['latin'],variable:'--font-sans'});
 
 const inter = Inter({
@@ -26,9 +29,9 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", inter.variable, inter.variable, "font-sans", outfit.variable)}
     >
       <body className={`${outfit.className}`}>
-        <header>I Build This</header>
+        <Header />
         {children}
-        <footer>I Built This INC. All Right Reserved 2026</footer> ``
+        <Footer />
         </body>
     </html>
   );
