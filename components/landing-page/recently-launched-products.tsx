@@ -1,10 +1,14 @@
+"use cache";
+
 import { CalendarIcon } from "lucide-react";
 import SectionHeader from "../common/section-header";
 import ProductCard from "../products/product-card";
-import EmptyState from "../common/empty-state";     
+import EmptyState from "../common/empty-state";
+import { Suspense } from "react";     
+import { getRecentlyLaunchedProducts } from "@/lib/products/product-select";
 
-export default function RecentlyLaunchedProducts() {
-const recentlyLaunchedProducts = []
+export default async function RecentlyLaunchedProducts() {
+const recentlyLaunchedProducts = await getRecentlyLaunchedProducts();
 
 
   return (

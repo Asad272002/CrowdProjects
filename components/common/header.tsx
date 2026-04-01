@@ -1,11 +1,15 @@
-import { CompassIcon, HomeIcon, SparkleIcon, UserIcon } from "lucide-react";
+"use client";
+
+import { CompassIcon, HomeIcon, SparkleIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
+import { Suspense } from "react";
 
 
 const Logo = () => {
   return (
-    <Link href="/" className="flex item-center gap-2 group">
+    <Link href="/" className="flex items-center gap-2 group">
         <div className="size-8 rounded-lg bg-primary flex items-center justify-center">
             <SparkleIcon className="size-4 text-primary-foreground"/>  
         </div>
@@ -19,11 +23,11 @@ const Logo = () => {
 
 
 export default function Header() {
+  const { isLoaded, isSignedIn } = useUser();
 
-  const isSignedIn = false;
   return (
     <header className="sticky top-0 z-50  border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
-        <div className="wraper px-12">
+        <div className="wrapper px-12">
             <div className="flex h-16 justify-between items-center">
                 <Logo />    
                 <nav className="flex items-center gap-1">
@@ -38,26 +42,28 @@ export default function Header() {
                     </Link>
                        </nav>
                     <div className="flex items-center gap-3">
-                     {isSignedIn ?(
-                     <>
-                     <Button asChild>
-                        <Link href="/submit" className="">
+                      <Suspense fallback={<div>LoadingAUTH ...</div>}>
+                      {isLoaded && !isSignedIn && (
+                        <div className="flex items-center gap-3">
+                          <SignInButton />
+                          <SignUpButton>
+                            <button className="bg-primary text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer" >
+                              Sign Up
+                            </button>
+                          </SignUpButton>
+                        </div>
+                      )}
+
+                      {isLoaded && isSignedIn && (
+                        <Button asChild>
+                          <Link href="/submit" className="">
                             <SparkleIcon className="size-4" />
                             <span>Submit Project</span>
-                        </Link>
-                     </Button>
-                     {/*Clerk User*/}
-                     <Button variant={"ghost"}>
-                      <UserIcon className="size-4" />
-
-                     </Button>
-                     </>
-                     ) :( 
-                     <>
-                     <Button variant="ghost">Sign In</Button>
-                     <Button >Sign Up</Button>
-                     </>
-                    )}
+                          </Link>
+                        </Button>
+                      )}
+                      {isLoaded && isSignedIn && <UserButton />}
+                      </Suspense>
                     </div>
              
             </div>

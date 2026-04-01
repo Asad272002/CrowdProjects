@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { ClerkProvider } from "@clerk/nextjs";
 
 import Footer from "@/components/common/footer";
 import Header from "@/components/common/header";
@@ -29,9 +30,11 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", inter.variable, inter.variable, "font-sans", outfit.variable)}
     >
       <body className={`${outfit.className}`}>
-        <Header />
-        {children}
-        <Footer />
+        <ClerkProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ClerkProvider>
         </body>
     </html>
   );
