@@ -35,6 +35,7 @@ export default function ProductSubmitForm(){
              onChange={()=>{}} 
              error=""
              />   
+             
              <FormField
              label="Tagline"
              name="tagline"
@@ -43,6 +44,16 @@ export default function ProductSubmitForm(){
              required
              onChange={()=>{}} 
              error=""
+             />   
+             <FormField
+             label="Description"
+             name="description"
+             id="description" 
+             placeholder="Enter the description of your product"
+             required
+             onChange={()=>{}} 
+             error=""
+             textarea
              />   
              <FormField
              label="Website URL"
